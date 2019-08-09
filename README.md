@@ -46,37 +46,43 @@
 
 **项目结构** 
 <pre>
-X-SpringBoot
-├─doc  
+
+├─doc  基础环境配置数据 
 │  ├─db.sql 项目SQL语句
 │  ├─nginx.confi nginx 配置文件
-│  ├─updateLog 更新日志
+│ 
+│ 
 │
-├─authentication 权限认证
-├─common 公共模块
-│  ├─annotation 自定义注解
-│  ├─aspect 系统日志
-│  ├─base base包
-│  ├─exception 异常处理
-│  ├─utils 一些工具类
-│  ├─validator 后台校验
-│  └─xss XSS过滤
+├─facade dubbo接口模块
 │ 
-├─config 配置信息
-├─interceptor token拦截器
 │ 
-├─modules 功能模块
-│  ├─app API接口模块(APP调用)
-│  ├─oss 文件服务模块
-│  └─sys 权限模块
-│  └─apkversion APK 版本管理
-│  └─gen 代码生成
+├─model 对外提供的共享数据
+│  ├─constant  对外公共字典数据
+│  ├─enums     对外公共枚举数据
+│  ├─model     接口中的对象定义
+│ 
+├─repository 持久层对象及其基础操作
+│  ├─config   持久层配置
+│  ├─mybatis  mysql数据库操作
+│  ├─redis    redis数据库操作
+│  ├─resources    持久层配置 ，持久层地址配置信息，从服务配置里面，按照不同环境进行配置。
+│     ├─mapping   mybatis对应mapping对象
+│     ├─application-mybatis.yml   mybatis配置信息,通过： spring.profiles.include:mybatis 方式引入到服务配置中
+│ 
+├─rpc 服务模块
+│  ├─config 配置信息
+│  ├─controller rest接口实现包
+│  ├─rpc  dubbo接口实现包
+│  ├─service  内部服务实现包
+│  └─util  util工具包
 │ 
 ├─Application 项目启动类
-├─Swagger2 swagger2类
 │  
 ├──resources 
-│  ├─mapper SQL对应的XML文件
+│  ├─application.yml 基础服务配置
+│  ├─application-dubbo.yml dubbo配置信息，通过： spring.profiles.include:dubbo 方式引入到服务配置中
+│  ├─logback.xml log配置
+│  └─banner.txt  banner定义
 
 </pre>
 

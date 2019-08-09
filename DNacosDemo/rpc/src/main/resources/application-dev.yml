@@ -5,3 +5,8 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://192.168.3.213:3306/test?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8&nullCatalogMeansCurrent=true
+  redis:
+    host: 192.168.3.212
+    port: 6379
+    password: Amaidan@123456
+    database: 1
