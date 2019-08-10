@@ -1,0 +1,6 @@
+# admin console http://192.168.3.121:8848/nacos/index.html
+nacos:
+  config:
+    server-addr: 192.168.3.121:8848
+
+

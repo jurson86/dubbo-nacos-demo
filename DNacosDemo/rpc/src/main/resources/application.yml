@@ -2,7 +2,7 @@ server:
   port: 9901
 spring:
   profiles:
-    include: mybatis,dubbo
+    include: mybatis,dubbo,nacos
     active: dev
   application:
     name: DNacosDemo

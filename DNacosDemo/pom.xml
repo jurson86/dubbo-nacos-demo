@@ -19,6 +19,7 @@
         <module>model</module>
         <module>repository</module>
         <module>rpc</module>
+        <module>consumer</module>
     </modules>
 
     <!--自定义标签-->
@@ -28,11 +29,17 @@
         <java.version>1.8</java.version>
         <curator-framework.version>4.0.1</curator-framework.version>
         <zookeeper.version>3.4.13</zookeeper.version>
-        <dubbo.starter.version>0.2.0</dubbo.starter.version>
         <logback.core.version>1.1.7</logback.core.version>
         <slf4j-api.version>1.7.7</slf4j-api.version>
         <mybatis-plus.version>3.1.0</mybatis-plus.version>
         <mysql.version>8.0.15</mysql.version>
+        <nacos-config-spring-boot.version>0.2.1</nacos-config-spring-boot.version>
+        <nacos-discovery-spring-boot-starter.version>0.2.1</nacos-discovery-spring-boot-starter.version>
+        <dubbo-spring-boot-starter.version>0.2.1.RELEASE</dubbo-spring-boot-starter.version>
+        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <dubbo.version>2.6.5</dubbo.version>
+        <dubbo-registry-nacos.version>0.0.1</dubbo-registry-nacos.version>
+        <dubbo-spring-context-support.version>1.0.2</dubbo-spring-context-support.version>
     </properties>
 
     <dependencies>
@@ -47,21 +54,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.alibaba.boot</groupId>
-                <artifactId>dubbo-spring-boot-starter</artifactId>
-                <version>${dubbo.starter.version}</version>
-            </dependency>
-
-            <dependency>
                 <groupId>org.apache.curator</groupId>
                 <artifactId>curator-framework</artifactId>
                 <version>${curator-framework.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.zookeeper</groupId>
-                <artifactId>zookeeper</artifactId>
-                <version>${zookeeper.version}</version>
             </dependency>
 
             <dependency>
@@ -104,6 +99,61 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
+
+            <!-- nacos 配置中心 -->
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>nacos-config-spring-boot-starter</artifactId>
+                <version>${nacos-config-spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>nacos-config-spring-boot-actuator</artifactId>
+                <version>${nacos-config-spring-boot.version}</version>
+            </dependency>
+
+            <!-- nacos 注册中心 -->
+
+            <!-- dubbo + spring-boot + nacos start -->
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>dubbo-spring-boot-starter</artifactId>
+                <version>${dubbo-spring-boot-starter.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.alibaba</groupId>
+                        <artifactId>dubbo</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>dubbo-spring-boot-actuator</artifactId>
+                <version>${dubbo-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.boot</groupId>
+                <artifactId>nacos-discovery-spring-boot-starter</artifactId>
+                <version>${nacos-discovery-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo-registry-nacos</artifactId>
+                <version>${dubbo-registry-nacos.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.spring</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${dubbo-spring-context-support.version}</version>
+            </dependency>
+            <!-- dubbo + nacos end -->
 
         </dependencies>
     </dependencyManagement>

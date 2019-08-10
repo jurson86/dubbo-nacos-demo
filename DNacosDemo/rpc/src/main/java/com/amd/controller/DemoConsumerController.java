@@ -1,6 +1,7 @@
 package com.amd.controller;
 
 
+import com.alibaba.nacos.api.config.annotation.NacosValue;
 import com.amd.mybatis.entity.User;
 import com.amd.mybatis.service.UserService;
 import com.amd.service.DemoService;
@@ -19,6 +20,9 @@ public class DemoConsumerController {
 
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @NacosValue(value = "${nacos.config.demo:helloNacos}", autoRefreshed = true)
+    private String nacosCfg;
+
     @Autowired
     private DemoService demoService;
 
@@ -28,6 +32,7 @@ public class DemoConsumerController {
     @RequestMapping("/sayHello/{name}")
     @ResponseBody
     public String sayHello(@PathVariable("name") String name) {
+        logger.info(nacosCfg);
 
         // 查询
         List<String> aa = userService.queryAllPerms(1L);
